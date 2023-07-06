@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -eufo pipefail
+
+{{ $brews := list
+     "bat"
+     "curl"
+     "exa"
+     "gh"
+     "git"
+     "git-lfs"
+     "jq"
+     "ripgrep" -}}
+{{ $casks := list
+     "warp" -}}
+
+{{ if .personal -}}
+{{   $casks = concat $casks (list
+       "whatsapp") -}}
+{{ end -}}
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ range ($brews | sortAlpha | uniq) -}}
+brew "{{ . }}"
+{{ end -}}
+{{ range ($casks | sortAlpha | uniq) -}}
+cask "{{ . }}"
+{{ end -}}
+EOF
