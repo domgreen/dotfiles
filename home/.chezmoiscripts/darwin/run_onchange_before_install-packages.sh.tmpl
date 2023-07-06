@@ -16,6 +16,7 @@ set -eufo pipefail
 
 {{ if .personal -}}
 {{   $casks = concat $casks (list
+       "visual-studio-code"
        "whatsapp") -}}
 {{ end -}}
 
