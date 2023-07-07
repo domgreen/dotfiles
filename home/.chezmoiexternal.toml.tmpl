@@ -11,12 +11,12 @@
 {{-     $fontDir = ".local/share/fonts" }}
 {{-   end }}
 {{-   range (list
-        "JetBrainsMono") }}
+        "JetBrainsMono"
+        "RobotoMono") }}
 ["{{ $fontDir }}/{{ . }}"]
     type = "archive"
     url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/{{ . }}.zip"
     exact = true
-    stripComponents = 1
     refreshPeriod = "168h"
 {{-   end }}
 {{- end }}
