@@ -1,0 +1,23 @@
+[".config/nvim/pack/twpayne/start/vim-igc"]
+    type = "git-repo"
+    url = "http://github.com/twpayne/vim-igc.git/"
+    refreshPeriod = "168h"
+
+{{- if and (not .ephemeral) (not .headless) }}
+{{-   $fontDir := "" }}
+{{-   if eq .chezmoi.os "darwin" }}
+{{-     $fontDir = "Library/Fonts" }}
+{{-   else if eq .chezmoi.os "linux" }}
+{{-     $fontDir = ".local/share/fonts" }}
+{{-   end }}
+{{-   range (list
+        "JetBrainsMono") }}
+["{{ $fontDir }}/{{ . }}"]
+    type = "archive"
+    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/{{ . }}.zip"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+{{-   end }}
+{{- end }}
+
