@@ -2,7 +2,7 @@
 
 set -eufo pipefail
 
-if [ ! "$(command -v rust)" ]; then
+if [ ! "$(command -v rustc)" ]; then
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 fi
 
