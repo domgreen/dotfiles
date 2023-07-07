@@ -1,22 +1,24 @@
-#!/bin/bash
+#! /bin/bash
 
 set -eufo pipefail
 
 {{ $brews := list
      "bat"
      "curl"
+     "docker"
      "exa"
      "gh"
-     "git"
      "git-lfs"
+     "git"
      "jq"
+     "neovim"
      "ripgrep" -}}
 {{ $casks := list
+     "visual-studio-code"
      "warp" -}}
 
 {{ if .personal -}}
 {{   $casks = concat $casks (list
-       "visual-studio-code"
        "whatsapp") -}}
 {{ end -}}
 

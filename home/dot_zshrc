@@ -1,0 +1,6 @@
+# https://github.com/ogham/exa
+alias ls='exa'
+alias l='exa -l --icons'
+alias lla='exa -la'
+alias lt='exa -T --icons'
+
