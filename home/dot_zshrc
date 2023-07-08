@@ -5,3 +5,6 @@ alias lla='exa -la'
 alias lt='exa -T --icons'
 
 alias vim="nvim"
+
+alias top="btm"
+alias htop="btm"
