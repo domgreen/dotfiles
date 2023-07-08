@@ -4,7 +4,12 @@ alias l='exa -l --icons'
 alias lla='exa -la'
 alias lt='exa -T --icons'
 
+# https://astronvim.com/
 alias vim="nvim"
 
+# https://clementtsang.github.io/bottom/0.9.3/
 alias top="btm"
 alias htop="btm"
+
+# https://starship.rs/
+eval "$(starship init zsh)"
