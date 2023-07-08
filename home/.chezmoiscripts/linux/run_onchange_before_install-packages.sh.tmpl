@@ -3,18 +3,21 @@
 {{ $packages := list
      "bat"
      "curl"
+     "exa"
      "git"
      "git-lfs"
      "jq"
      "libfuse2"
      "ripgrep"
      "shellcheck"
+     "yq"
      "zsh" -}}
-{{ $snaps := list -}}
+{{ $snaps := list "bottom" -}}
 {{ $classicSnaps := list -}}
 
 {{ if not .headless -}}
-{{   $packages = mustAppend $packages "xclip" -}}
+{{   $packages = mustAppend $packages 
+     "xclip" -}}
 {{   $classicSnaps = mustAppend $classicSnaps "code" -}}
 {{ end -}}
 
@@ -45,4 +48,8 @@ set -eufo pipefail
 {{   end }}
 {{ end }}
 
-{{ end -}}
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+{{ $sudo }} install lazygit /usr/local/bin
+ 
