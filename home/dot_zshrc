@@ -13,3 +13,11 @@ alias htop="btm"
 
 # https://starship.rs/
 eval "$(starship init zsh)"
+
+# Add gnu-tar for ansible
+export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH" 
+export MANPATH="/usr/local/opt/gnu-tar/libexec/gnuman:$MANPATH"
+
+# git
+alias grt="cd \"$(git rev-parse --show-toplevel || echo .)\""
+
