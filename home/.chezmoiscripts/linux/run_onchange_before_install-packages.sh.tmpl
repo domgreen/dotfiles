@@ -2,10 +2,11 @@
 
 set -eufo pipefail
 
+{{ $repos := list
+     "ppa:rmescandon/yq" - }}
 {{ $packages := list
      "bat"
      "curl"
-     "exa"
      "git"
      "git-lfs"
      "jq"
@@ -29,6 +30,10 @@ set -eufo pipefail
 {{ $sudo := "sudo " -}}
 {{ if eq .chezmoi.username "root" -}}
 {{   $sudo = "" -}}
+{{ end -}}
+
+{{ range ($brews | sortAlpha | uniq) -}}
+{{   $sudo }}add-apt-repository {{ . }}
 {{ end -}}
 
 {{ $sudo }}apt-get update
