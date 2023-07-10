@@ -32,7 +32,7 @@ set -eufo pipefail
 {{   $sudo = "" -}}
 {{ end -}}
 
-{{ range ($brews | sortAlpha | uniq) -}}
+{{ range ($repos | sortAlpha | uniq) -}}
 {{   $sudo }}add-apt-repository {{ . }}
 {{ end -}}
 
